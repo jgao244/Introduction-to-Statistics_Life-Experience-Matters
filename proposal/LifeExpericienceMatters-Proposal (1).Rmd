@@ -1,0 +1,161 @@
+---
+title: "The Relationship Between Workload and Living Quality of Undergraduates in UW Madison"
+subtitle: "STAT 302: Accelerated Introduction to Statistics, LifeExperienceMatters"
+author: 
+- "Jiaer Zhang, Group Leader"
+- "Jiayi Gao"
+- "Hao Li"
+date: "November 1st, 2019"
+output: 
+  pdf_document:
+    toc_depth: 4  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+header-includes:
+- \usepackage{fancyhdr}
+- \pagestyle{fancy}
+- \fancyhf{}
+- \rhead{LifeExperienceMatters}
+- \lhead{Team 17 STAT 302}
+- \cfoot{\thepage}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(fivethirtyeight)
+library(Lock5Data)
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+```
+
+\centering
+\raggedright
+\newpage
+\tableofcontents
+
+\newpage
+
+## Statement of purpose:
+The purpose of the study is to find whether there is a meaningful correlation between the workloads of Chinese international undergraduate students and quality of these students' life. Precisely, we want to find out whether high workloads have a negative impact on students' life quality.
+
+## Specific aims:
+The specific aim is to provide suggestions to Chinese international undergraduate students whose college life experience quality do not meet their expectations about how to improve their life quality and maybe give some insights to Chinese international pre-college students about their major selection.
+
+
+## Background information: 
+
+Undergraduate students value the quality of their college life, which generally refers to the physical health, comfort, and happiness experienced by the student. However, due to the high pressure and study workload of the undergraduate education, many college students could not balance their college life in a satisfactory way. 
+
+One study showed that stress and workload can negatively influence the quality of life, which is the main element of well-being, of students (Weinstein & Laverghetta, 2009, p1). For example, because of the high-level workload and stress, undergraduate students’ mental health can be harmed. In some severe cases, students even have dangerous ideas such as suicide. For example, close to 20 percent of college students in China report suicide ideas and the range varies from 6%–39.2% in other countries (Zhang et al, 2012, p.2). As a result, it is significant to investigate the relationship between international undergraduate students’ study workload and the quality of their life. Different amount of undergraduates course workloads are determined by different majors. Specifically, the stress level from various majors can affect undergraduate students differently. Researchers have conducted one study based on undergraduate students randomly sampled from all US universities, and the result indicated that “hard” science majors experienced significantly more perceived stress than “soft” (relatively easy) majors (May & Casazza, 2012, p. 1). For example, those who major in Engineering, Computer Science, and Nursing are the students who have a higher possibility of having more work and stress (Robinson, 2009, p.2). Moreover, Engineering and Computer Science department have the highest perceived stress at (15.4%) among students with Nursing coming in second at (14.1%) and Science and mathematics coming in third at (11.8%). Higher levels of workloads occupy undergraduate students a large amount of after-class time. To be specific, undergraduates have to give up some amount of their recreation time and even sleep time to complete high-leveled workloads. This indicates these undergraduates having lots of course workloads usually fail to achieve their expectations and goals about sleep hours and extracurricular life, perceiving a lower quality of life. In contrast, college students who have participated in extracurricular activities normally frequently join extra-curricular activities and meet their expectations often have a high quality of their college life.
+
+
+
+
+
+
+## Research design
+
+
+### The population of interest: 
+
+- Population of interest: The Chinese international undergraduate students in UW-Madison.
+
+- Sample: Expecting around 250 Chinese international undergraduate students who take our survey
+
+
+### Type of study: 
+
+This is an **observational study** because we do not actively interact with the participants. We only collect data from them and perform data analysis. We will not derive causation from this study, but rather to identify an association between the variables. (need specify.)  
+
+
+### Data description & data collection: 
+
+Our data includes 8 variables: The specific variables are described below
+
+We plan to collect our data through online surveys like qualtric. We will send out emails to Chinese international undergraduates and send links of the survey in different chatting groups. Moreover, We will also hand out paper surveys to Chinese international undergraduates at different locations on campus at different times. 
+
+### Sampling Scheme
+
+1. We used stratified sampling to randomly select our cases.
+Since Chinese international undergraduates, who widely use a social media named We-chat to communicate, have different chatting groups in We-chat based on different year-of-university, we have four stratum (year of university): freshmen, sophomore, senior, and junior We-chat chatting groups. In each strata, labeling Chinese international students of this strata from 1 to n (n is the number of individuals in this strata). Then, Using randInt(1,n) to generate m different individuals(m=sample size * (strata size/ population size)) and select these m different individuals, and repeat this procedure for every stratum and add the selected cases to get a sample of size 4m. 
+
+2. We will also use the clustered sampling method to randomize the sampling process.
+Chinese international students in the We-chat group will be divided into many smaller subgroups of 60. The cluster is a subgroup and each subgroup has the same percentage of Chinese international students from different year-of-university as the true population. We label all clusters(subgroups) from 1 to n (n is the number of clusters) Then, Using randInt(1,n) to generate m different clusters (subgroups) (m = sample size / cluster size). Selecting all the individuals (Chinese undergraduate students) in these m corresponding clusters for the sample in this study. 
+
+### Variable Table and Description
+
+|  Name of variable  |   Explanatory/Response |  Categorical/Quantitative|Unit of Measurement|
+|:----|:----:|----:|----:|
+|age   |  Explanatory    |  Quantitative | year-old|
+|gender   |  Explanatory    |  Categorical |   |
+|Major   |  Explanatory    |  Categorical |    |
+|Credits|Explanatory|Quantitative| credits     |
+|Elementary | Explanatory     | Categorical  |   |
+|Intermediate | Explanatory     | Categorical  |   |
+|Advanced | Explanatory     | Categorical  |   |
+|classHour|Explanatory| Quantitative|   hours |
+|StudyHour|Explanatory| Quantitative|   hours|
+|AcademicHour|Response| Quantitative|   hours|
+|Fallasleeptime|Response|Categorical|    |
+|SleepTime|Response|Quantitative|   hours  |
+|WakeupTime|Response|Categorical|     |
+|Activity|Response|Categorical|     |
+|ActivityType|Response|Categorical|   |
+|ActivityTime|Response|Quantitative| hours    |
+
+
+- **age**:
+
+- **gender**:
+
+
+- **Major**: The major that each Chinese international undergraduate student takes: major name (e.g, Math, Statistics, Computer Science, etc.)
+
+- **Credits**: the number of credits each  Chinese international undergraduate student take this semester
+
+- **Elementary**:
+
+- **Intermediate**:
+
+- **Advanced**: Whether each Chinese international undergraduate student have taken any advanced coursework at UW–Madison: Yes or No
+
+- **classHour**: 
+
+- **StudyHour**:
+
+- **AcademicHour**:
+
+- **Fallasleeptime**:
+
+- **SleepTime**:The number of hours of sleeping for each Chinese international undergraduate student 
+
+- **WakeupTime**:
+
+- **Activity**: Whether each Chinese international undergraduate student attends any extracurricular activities: Yes or No
+
+- **ActivityType**:
+
+
+- **ActivityTime**:The number of hours of recreation for each Chinese international undergraduate student
+
+
+
+ 
+
+
+
+
+## Reference List
+
+May, R. W., & Casazza, S. P. (2012). Academic Major as a Perceived Stress Indicator: Extending Stress Management Intervention. College Student Journal, 46(2), _264–273_. Retrieved from http://search.ebscohost.com.ezproxy.library.wisc.edu/login.aspx?direct=true&AuthType=ip,uid&db=aph&AN=77698058&site=ehost-live&scope=site
+
+Weinstein, L., & Laverghetta, A. (2009). College Student Stress and Satisfaction with Life. College Student Journal, 43(4), _1161–1162_. Retrieved from http://search.ebscohost.com.ezproxy.library.wisc.edu/login.aspx?direct=true&AuthType=ip,uid&db=aph&AN=55492493&site=ehost-live&scope=
+
+Zhang, X., Wang, H., Xia, Y., Liu, X., & Jung, E. (2012). Stress, coping and suicide ideation in Chinese college students. Journal of Adolescence, 35(3), _683–690_. doi: 10.1016/j.adolescence.2011.10.003
+
+
+
+
+
+
+

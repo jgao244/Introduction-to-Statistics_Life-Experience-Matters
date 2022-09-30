@@ -1,0 +1,307 @@
+---
+title: "The Relationship Between Workload and Living Quality of Undergraduates in UW Madison"
+subtitle: "STAT 302: Accelerated Introduction to Statistics, LifeExperienceMatters"
+author: 
+- "Jiaer Zhang, Group Leader"
+- "Jiayi Gao"
+- "Hao Li"
+date: "November 18th, 2019"
+output: 
+  pdf_document:
+    toc_depth: 5  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+header-includes:
+- \usepackage{fancyhdr}
+- \pagestyle{fancy}
+- \fancyhf{}
+- \rhead{Jiaer Zhang}
+- \lhead{LifeExperienceMatters}
+- \cfoot{\thepage}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(fivethirtyeight)
+library(Lock5Data)
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+data.raw <- read_csv(file = "/Users/apple/Desktop/Life Experience Matters_November 24, 2019_16.47.csv")
+MyData = data.raw %>% 
+  mutate(Stem=recode(Major,`STEM (Science, Technology, Engineering, Mathematics)`="Yes",.default = "No"))
+
+```
+
+\centering
+\raggedright
+\newpage
+\tableofcontents
+
+\newpage
+
+
+# Introduction
+
+
+## Background information
+
+Undergraduate students value the quality of their college life, which generally refers to physical health, comfort, and happiness experienced by the student. However, due to the high pressure and study workload of undergraduate education, many college students could not balance their college life in a satisfactory way. 
+
+One study showed that stress and workload can negatively influence the quality of life, which is the main element of well-being, of students (Weinstein & Laverghetta, 2009, p1). For instance, because of the high-level workload and stress, undergraduate students’ mental health can be harmed. In some severe cases, students even have dangerous ideas such as suicide. One study showed that close to 20 percent of college students in China report suicide ideas and the range varies from 6%–39.2% in other countries (Zhang et al., 2012, p.2). As a result, it is significant to investigate the relationship between international undergraduate students’ study workload and the quality of their life. Different amounts of undergraduates course workloads are determined by different majors. Specifically, the stress level from various majors can affect undergraduate students differently. Researchers have conducted one study based on undergraduate students randomly sampled from all U.S. universities, and the result indicated that “hard” science majors experienced significantly more perceived stress than “soft” (relatively easy) majors (May & Casazza, 2012, p. 1). Those who major in Engineering, Computer Science, and Nursing are the students who have a higher possibility of having more work and stress (Robinson, 2009, p.2). Moreover, Engineering and Computer Science department has the highest perceived stress at (15.4%) among students with Nursing coming in second at (14.1%) and Science and mathematics coming in third at (11.8%). High levels of workloads occupy undergraduate students a large amount of after-class time. To be specific, undergraduates have to give up some amount of their recreation time and even sleep time to complete high-leveled workloads. This indicates these undergraduates having lots of course workloads usually fail to achieve their expectations and goals about sleep hours and extracurricular life, perceiving a lower quality of life. In contrast, college students who have participated in extracurricular activities normally frequently join extra-curricular activities and meet their expectations often have a high quality of their college life.
+
+Different from previous studies focusing on a broad view of the workloads and students’ stress level, this study concentrates more on the stress level for different majors and tries to find whether recreational activities can help to reduce the perceived stress and improve students’ life quality.
+
+
+## Broader impact and greater significance
+
+The target audience of this study is all Chinese international students. The results of this study could be helpful for many Chinese international undergraduates in the United States. The University of Wisconsin-Madison is a typical American public research institute which offers various majors, and the academic requirements for the different major and learning environment of UW-Madison could at least provide a rough representation of other universities, Therefore, the target market for this study can be all other public American universities. 
+
+By finding meaningful relationships between workloads and the student’s life quality, this study can provide pre-college students and undergraduates with undecided majors some insights about their major selections based on their learning abilities. For universities, the ideal educational outcome is to help the students find the most suitable major and prepare them for the future work field that they are interested in. From the students’ perspective, they might want to choose a suitable major with manageable workloads to experience an ideal college life. The result of the research can be informative for undergraduate students to compare different majors and help them to balance academic studies and social life.
+
+
+
+## Statement of purpose
+
+### Purpose
+
+The purpose of the study is to find whether there is a meaningful association between the workloads of Chinese international undergraduate students and the quality of these students' life. Precisely, we want to find out whether high workloads have a negative impact on students' life quality. 
+
+### Specific aims and objectives
+
+The specific aim is to provide suggestions to Chinese international undergraduate students, whose college life quality does not meet their expectations, about the way to improve their life quality and provide some insights to Chinese international pre-college students on their major selection. The center challenges of this study are collecting data without too many biases.
+
+### Research plan
+
+The plane is to conduct an observational study. By randomly selecting samples using the methods of stratified sampling and cluster sampling, the researchers collect data from representative samples, then try to find meaningful associations between explanatory and response variables and identify possible biases for this study. Based on the association found in the study, researchers can generalize this result to the population of interest, which is all Chinese international students at the University of Wisconsin-Madison.
+
+
+
+# Methods
+
+## Data Collection
+
+### Population of interest
+
+The population of interest for this experiment is the Chinese international undergraduate students in the University of Wisconsin - Madison. The samples are expecting around 250 Chinese international undergraduate students who take our survey.
+
+
+### Type of study
+
+This is an **observational study** because we do not actively interact with the participants. We only collect data from them and perform data analysis. We will not derive causation from this study, but rather to identify an association between the variables. Because we want to collect information about students’ living habits such as sleeping hours, studying hours and recreational time, it is very difficult to collect in an experimental setting. Even if we can collect them in an experimental setting, it is impractical to do since it is very expensive and time-consuming. Instead, an observational study can allow researchers to real-life and more accurate data compared with an experimental study.
+
+### Survey protocol
+
+#### type of survey
+
+This survey is a cross-sectional survey because the fundamental features of cross-sectional survey are met. The survey is conducted at a single point in time and the interest is the experience of students at the present time. It is not aimed to keep track of a curtain population for a period of time. This survey also makes comparing and analysing different variables simultaneously feasible. Inference could be drawn from the data of different variables collected. Therefore, this survey is classified as cross-sectional survey. 
+
+#### Location and time
+
+There are not specific restrictions on the location and time on this survey due to the nature of the data collection approach. The data is collected through internet questionnaires. The respondent could access to the survey anytime and at any location. The challenge the randomization procedure for sending the survey which will be discussed in the following section.
+
+#### Survey method
+
+We used stratified sampling to randomly select our cases.
+Since Chinese international undergraduates, who widely use a social media named We-chat to communicate, have different chatting groups in We-chat based on different year-of-university, we have four stratum (year of university): freshmen, sophomore, senior, and junior We-chat chatting groups. In each strata, labeling Chinese international students of this strata from 1 to n (n is the number of individuals in this strata). Then, Using randInt(1,n) to generate m different individuals(m=sample size * (strata size/ population size)) and select these m different individuals, and repeat this procedure for every stratum and add the selected cases to get a sample of size 4m. 
+
+We will also use the clustered sampling method to randomize the sampling process.
+Chinese international students in the We-chat group will be divided into many smaller subgroups of 60. The cluster is a subgroup and each subgroup has the same percentage of Chinese international students from different year-of-university as the true population. We label all clusters(subgroups) from 1 to n (n is the number of clusters) Then, Using randInt(1,n) to generate m different clusters (subgroups) (m = sample size / cluster size). Selecting all the individuals (Chinese undergraduate students) in these m corresponding clusters for the sample in this study.
+
+
+
+### Randomization protocol
+
+**confounding variable**
+
+The possible confounding variable includes the individual's habits. For example, some students do not sleep as much as others and their average sleep hours may be less than the majority students no matter of their study workload 
+
+Season and weather in Madison could be another confounding variable. More specifically, in summer, the weather is nice and students are more likely to have outdoor activities such as hiking. This may increase extracurricular activity hours. In winter the weather is cold and the snows heavily, students might tend to stay in libraries or at home to study rather than go outside. This may decrease the extracurricular activity hours. 
+
+**Representative of the population**
+
+The researchers should balance the weight and proportion of each strata.
+
+
+
+### Why is it random and representative
+
+**Possible Bias**
+
+The possible biases for this study include sampling bias and non-sampling bias. 
+
+The non-sampling biases includes: response bias, which occurs when the respondent that do not answer the questions according to their true situations. Question and wording bias, which is another non-sampling bias caused by the ambiguous words in the survey that might cause people giving unexpected answers.
+
+Sampling bias is caused by insufficient randomization procedure. For example, in this study, sampling bias might be caused by: 
+too many samples have the same sex, 
+too many samples are from the same year of the school, 
+too many samples are selected from people we are familiar with,
+too many samples from the same majors,
+samples are selected from the people who use “Wechat”.
+
+
+**Reduce Bias**
+
+To reduce the response bias we have in this study, researchers could use contradictory questions in the survey. For example, researchers could ask both “Is your sleeping time above 7 hours” and “Is your sleeping hour below 7 hours” in the survey. To be more specific, the researchers could put the questions on different pages so that the sample who takes the survey has a higher possibility of telling the truth. By comparing the answers, the researchers can tell if the sample is lying or not.
+
+To reduce the question and wording bias, researchers could ask experts to modify the wording in each question.
+
+To reduce the sampling bias, researchers could attempt to collect as much of the data as possible. Then the researchers could adjust the bias to some extent by stratification. For instance, in this survey, the researchers could stratify the samples by years of school such as freshmen, sophomore, junior and senior, and then according to the stratification to modify the weight of each group.
+
+### Sample size determination
+
+For sample size determination at this stage, methods of a single proportion are applied. For the categorical variables, the margin of error of 8% and a confidence level of 95% is applied. The following is one example using variable "Advanced" to estimate the desired sample size. The result is 151 in this case. 
+
+```{r eval=FALSE, include=FALSE}
+
+Data <- MyData[c(3:89),c(18:40)]
+p.hat <- mean(Data$Q8=="Yes")
+n <- length(Data$Q8)
+se <- sqrt(p.hat*(1-p.hat)/n)
+
+conf.level <- 0.95
+alpha <- 1-conf.level
+z.star <- qnorm(1-alpha/2)
+z.star
+p.hat + c(-z.star,z.star)*se
+
+me = 0.08
+Samplesize = (z.star/me)*(z.star/me)*0.5*0.5
+(Samplesize) 
+```
+
+## List of variables of interest
+
+Our data include 17 variables: The specific variables are described below
+
+We plan to collect our data through online surveys like "Qualtric”. We will send out emails to Chinese international undergraduates and send links to the survey in different chatting groups. Moreover, We will also hand out paper surveys to Chinese international undergraduates at different locations on campus at different times.
+
+### Variable Table
+
+|  Name of variable  |   Explanatory/Response |  Categorical/Quantitative|Unit of Measurement|
+|:----|:----:|----:|----:|
+|Age   |  Explanatory    |  Quantitative | year-old|
+|Credits|Explanatory|Quantitative| credits     |
+|classHour|Explanatory| Quantitative|   hours |
+|StudyHour|Explanatory| Quantitative|   hours|
+|SchoolYear   |  Explanatory    |  Categorical | |
+|Gender   |  Explanatory    |  Categorical |   |
+|Major   |  Explanatory    |  Categorical |    |
+|Elementary | Explanatory     | Categorical  |   |
+|Intermediate | Explanatory     | Categorical  |   |
+|Advanced | Explanatory     | Categorical  |   |
+|AcademicHour|Response| Quantitative|   hours|
+|ActivityTime|Response|Quantitative| hours    |
+|SleepTime|Response|Quantitative|   hours  |
+|Fallasleeptime|Response|Categorical|    |
+|WakeupTime|Response|Categorical|     |
+|Activity|Response|Categorical|     |
+|ActivityType|Response|Categorical|   |
+
+### Data Dictionary
+
+- **Age**: The age of each sample.
+
+- **Credits**: the number of credits each sample.
+
+- **classHour**: Hours of sample spend on attending classes on average per day.
+
+- **StudyHour**: Hours of sample spend on studying on average per day.
+
+- **SchoolYear**: The schoolyear of each sample (e.g Freshmen, Sophomore, Junior, Senior).
+
+- **Gender**: The gender of each sample. (e.g, Male, Female)
+
+- **Major**: The primary major that each sample takes: major category (e.g, STEM, Business, Social Science, Liberal Art, Agriculture, Education)
+
+- **Elementary**: Whether each sample has taken any elementary coursework at UW–Madison: Yes or No
+
+- **Intermediate**: Whether each sample has taken any intermediate coursework at UW–Madison: Yes or No
+
+- **Advanced**: Whether each sample has taken any advanced coursework at UW–Madison: Yes or No
+
+- **AcademicHour**: Hours of sample spends on academic life (both attending courses and studying) on average per day.
+
+- **ActivityTime**: Hours that each sample spends on extracurricular activities on average per day.
+
+- **SleepTime**: The number of hours of sleeping for each sample on average per day
+
+- **Fallasleeptime**: Time that each sample takes to fall asleep (e.g less than 10 minutes; less than 20 minutes; less than 30 minutes; less than 1 hour; more than 1 hour)
+
+- **WakeupTime**: Times of waking up at night for each sample (e.g 0;1;2;3; more than3)
+
+- **Activity**: Whether each sample attends any extracurricular activities: Yes or No
+
+- **ActivityType**: Types of extracurricular activities (e.g club, part time job, etc)
+
+
+
+
+This project focuses on two tests including a randomization test and a t-test to analyze these variables.
+
+Firstly, a randomization test for difference in proportion is used to test whether there exists a significant difference between two proportions. In this study, the null hypothesis would be 
+ $$H_0: p_1-p_2 = 0$$ and the alternative hypothesis would be  $$ H_a: p_1-p_2 > 0$$. To test if the null hypothesis is true, randomly picking two binomial samples with sizes of n1 and n2. Each time these two samples are picked, the sample statistic $$ \hat(p)_1 − \hat(p)_2$$ is calculated. Repeating these steps at least 1000 times to build a symmetric and bell-shaped randomization distribution that centered at 0. In this case, the statistic samples are forced to be normal. After the randomization distribution of proportions is constructed, this study uses it to find the p-value by checking the amount of sample statistics that are more extreme than the original sample statistic, $$\hat(p)_1 − \hat(p)_2$$ At last, if the p-value is less than the significance level $\alpha$ (usually 0.05), the study has enough evidence to reject the null hypothesis and conclude that there is a significant difference between two proportions.
+
+Secondly, to test if there is a difference in means one variable in different categories, a t-test for the difference between means is conducted. The null hypothesis for this test is $$H_0: μ1 − μ2 = 0$$, and the alternative hypothesis is  $$H_a : μ1 − μ2 \neq 0$$. However, before executing a t-test, this study has to check if the sample sizes for the variable in both categories are large enough, which means both the sample sizes have to be larger than 30. And if the sample sizes are not large enough, the final distribution has to be approximately normal (no extreme outliers and skewness) to apply the Central Limit Theorem to estimate the sampling distribution. In order to find the p-value of the positive t-score, this study need to calculate the area under the t-distribution of both the right and the left of -t. Finally, if the p-value is less than the significance level $\alpha$ (usually 0.05), the study has enough evidence to reject the null hypothesis and conclude that there is a significant difference between two means.
+
+This study uses R studio as the technique to do the analyzing and graphing. Various types of packages in R studio are applied in this study including  ggplot2, dplyr, knitr, ggfortify, tidyverse, xtable, and reshape2.
+
+```{r}
+
+
+set.seed(302)
+boot.dist.sLEEPHOUR<- function(n,B){
+  B = 10000
+  n = nrow(data.raw)
+
+mat <- matrix(sample(data.raw$SleepHour, size=B*n, replace=TRUE),
+byrow = TRUE,
+nrow=B,
+ncol=n)
+boot.mean <- apply(mat, 1, mean)
+}
+SleepHour.mean = boot.dist.sLEEPHOUR()
+x.bar <- mean(SleepHour.mean)
+se <- sd(SleepHour.mean)
+(ci.se <- x.bar + c(-2,2) * se)
+
+df.boot <- data.frame(SleepHour.mean)
+ggplot(df.boot, aes(x=SleepHour.mean)) +
+  geom_density( color="black", alpha = 0.5, fill="blue")+
+geom_density()+xlab(" ")+ylab("hours of sleep")+
+  ggtitle("bootstrap distribution")+ theme(plot.title = element_text(hjust = 0.5))
+
+
+
+
+
+
+tab.p <- table(MyData$Gender,MyData$Stem)
+
+kable(tab.p,caption = "Gender and Major", booktabs = T)
+
+
+
+
+
+
+```
+
+
+
+
+\newpage
+
+# Reference
+
+May, R. W., & Casazza, S. P. (2012). Academic Major as a Perceived Stress Indicator: Extending Stress Management Intervention. College Student Journal, 46(2), _264–273_. Retrieved from http://search.ebscohost.com.ezproxy.library.wisc.edu/login.aspx?direct=true&AuthType=ip,uid&db=aph&AN=77698058&site=ehost-live&scope=site
+
+Weinstein, L., & Laverghetta, A. (2009). College Student Stress and Satisfaction with Life. College Student Journal, 43(4), _1161–1162_. Retrieved from http://search.ebscohost.com.ezproxy.library.wisc.edu/login.aspx?direct=true&AuthType=ip,uid&db=aph&AN=55492493&site=ehost-live&scope=
+
+Zhang, X., Wang, H., Xia, Y., Liu, X., & Jung, E. (2012). Stress, coping and suicide ideation in Chinese college students. Journal of Adolescence, 35(3), _683–690_. doi: 10.1016/j.adolescence.2011.10.003
+
+
+
+
+
+
+
